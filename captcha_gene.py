@@ -75,7 +75,7 @@ async def setup_default_executor(app, loop):
 async def sync_query(request):
     """同步返回执行结果."""
     loop = asyncio.get_event_loop()
-    font_path = Path(__file__).absolute().parent.parent.parent.joinpath("font/Arial.ttf")
+    font_path = Path(__file__).absolute().parent.joinpath("font/Arial.ttf")
     gene_code = partial(_gene_code, str(font_path))
     pic, text = await loop.run_in_executor(None, gene_code)
     return json({
@@ -85,7 +85,7 @@ async def sync_query(request):
 
 async def save_to_redis(uid,redis_url, ttl=None):
     loop = asyncio.get_event_loop()
-    font_path = Path(__file__).absolute().parent.parent.parent.joinpath("font/Arial.ttf")
+    font_path = Path(__file__).absolute().parent.joinpath("font/Arial.ttf")
     gene_code = partial(_gene_code, str(font_path))
     pic, text = await loop.run_in_executor(None, gene_code)
     redis = await aioredis.create_redis(
