@@ -1,7 +1,7 @@
 import base64
 from pathlib import Path
 import sys
-sys.path.append(str(Path(__file__).absolute().parent.parent.joinpath("img-gene")))
+sys.path.append(str(Path(__file__).absolute().parent.parent.joinpath("image-gene")))
 print(sys.path)
 from img_gene import app
 import unittest
@@ -33,7 +33,6 @@ class FlaskTest(unittest.TestCase):
 
     def test_captcha(self):
         request, response = self.app.post('/captcha')
-        #self.assertEqual(response.json["msg"], 'pong')
         with open("message.txt","w") as f:
             f.write(response.json["msg"])
         with open("pic.png","wb") as f:

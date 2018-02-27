@@ -2,11 +2,11 @@ from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor
 from sanic import Sanic
 from sanic.response import json
-from img_gene.captcha import captcha
-from img_gene.qr import qr
+from image_gene.captcha import captcha
+from image_gene.qr import qr
 
 
-__VERSION__ = '0.0.1'
+__VERSION__ = '0.0.5'
 app = Sanic('img_gene')
 font_path = Path(__file__).absolute().parent.parent.parent.joinpath("font/Arial.ttf")
 

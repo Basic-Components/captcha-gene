@@ -1,7 +1,7 @@
 
 # captcha-gene
 
-+ version: 0.0.1
++ version: 0.0.5
 + status: dev
 + author: huangsizhe
 + email: 

@@ -2,7 +2,7 @@
 import sys
 import argparse
 from pathlib import Path
-from img_gene import app, __VERSION__
+from image_gene import app, __VERSION__
 import yaml
 
 def _load_conf(path):

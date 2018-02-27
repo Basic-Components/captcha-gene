@@ -6,7 +6,7 @@ from sanic.log import logger
 from sanic import Blueprint
 from .captcha_gene import gene_code
 
-captcha_q = asyncio.Queue(maxsize=20)
+captcha_q = asyncio.Queue(maxsize=100)
 
 captcha = Blueprint('captcha', url_prefix="/captcha")
 
@@ -43,6 +43,7 @@ async def stop_captcha_producer(app, loop):
 async def sync_query(request):
     """同步返回执行结果."""
     if captcha_q.empty():
+        loop = asyncio.get_event_loop()
         font_path = request.app.config.CAPTCHA_FONT_PATH
         _gene_code = partial(gene_code, font_path)
         pic, text = await loop.run_in_executor(None, _gene_code)

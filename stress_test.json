@@ -1,1 +1,14 @@
-{"url": "http://localhost:5000/sync", "requests": 300, "concurrency": 10, "duration": 0, "method": "POST", "data": null, "ct": "text/plain", "auth": null, "headers": null, "pre_hook": null, "post_hook": null, "quiet": false}
+{
+    "url": "http://localhost:5000/captcha",
+    "requests": 100,
+    "concurrency": 10,
+    "duration": 0,
+    "method": "POST",
+    "data": null,
+    "ct": "text/plain",
+    "auth": null,
+    "headers": null,
+    "pre_hook": null,
+    "post_hook": null,
+    "quiet": false
+}
