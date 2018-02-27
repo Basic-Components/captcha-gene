@@ -1,2 +1,4 @@
-zmq
-uvloop
+sanic
+pillow
+qrcode
+yaml
