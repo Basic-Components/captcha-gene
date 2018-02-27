@@ -1,4 +1,9 @@
-from captcha-gene import app
+import base64
+from pathlib import Path
+import sys
+sys.path.append(str(Path(__file__).absolute().parent.parent.joinpath("img-gene")))
+print(sys.path)
+from img_gene import app
 import unittest
 
 
@@ -26,14 +31,28 @@ class FlaskTest(unittest.TestCase):
     def tearDown(self):
         print("tear down")
 
-    def test_ping(self):
-        request, response = self.app.get('/ping')
-        self.assertEqual(response.json["msg"], 'pong')
+    def test_captcha(self):
+        request, response = self.app.post('/captcha')
+        #self.assertEqual(response.json["msg"], 'pong')
+        with open("message.txt","w") as f:
+            f.write(response.json["msg"])
+        with open("pic.png","wb") as f:
+             content = base64.b64decode(response.json["img_b64"])
+             f.write(content)
+
+    def test_qr(self):
+        request, response = self.app.post('/qr',json={
+            "content":"测试测试"
+        })
+        with open("qr.png","wb") as f:
+            content = base64.b64decode(response.json["img_b64"])
+            f.write(content)
 
 
 def add_suite():
     suite = unittest.TestSuite()
-    suite.addTest(TestAdd("test_ping"))
+    suite.addTest(TestAdd("test_captcha"))
+    suite.addTest(TestAdd("test_qr"))
     return suite
 
 
