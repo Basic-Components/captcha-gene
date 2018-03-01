@@ -18,12 +18,12 @@ def _make_conf(args):
         result["PORT"] = args.port
     if args.host:
         result['HOST'] = args.host
-    if args.debug:
-        result['DEBUG'] = args.debug
+    if args.nodebug:
+        result['DEBUG'] = False
     if args.workers:
         result['WORKERS'] = args.workers
-    if args.access_log:
-        result['ACCESS_LOG'] = args.access_log
+    if args.noaccess_log:
+        result['ACCESS_LOG'] = False
     if args.ssl_cert and args.ssl_key:
         result["SSL"]={
             'cert':args.ssl_cert,
@@ -37,8 +37,8 @@ def _parser_args(params):
     parser.add_argument("--port", type=int, help="指定端口")
     parser.add_argument("--host", type=str, help="指定主机")
     parser.add_argument("--workers", type=int, help="启动多少个进程执行")
-    parser.add_argument("--debug", type=bool, help="是否使用debug模式")
-    parser.add_argument("--access_log", type=bool, help="是否输出access_log")
+    parser.add_argument("--nodebug", action="store_true", help="是否使用debug模式")
+    parser.add_argument("--noaccess_log", action="store_true", help="是否输出access_log")
     parser.add_argument("--ssl_cert", type=str, help="指定ssl证书")
     parser.add_argument("--ssl_key", type=str, help="指定ssl密钥")
 

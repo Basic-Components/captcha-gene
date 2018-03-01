@@ -1,7 +1,7 @@
 {
     "url": "http://localhost:5000/captcha",
-    "requests": 100,
-    "concurrency": 10,
+    "requests": 500,
+    "concurrency": 20,
     "duration": 0,
     "method": "POST",
     "data": null,
